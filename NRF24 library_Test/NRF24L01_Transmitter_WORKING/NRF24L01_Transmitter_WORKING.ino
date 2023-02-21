@@ -1,41 +1,43 @@
-//Include Libraries
+// Include Libraries
 #include <SPI.h>
 #include <nRF24L01.h>
 #include <RF24.h>
 
-//create an RF24 object
-RF24 radio(7, 8);  // CE, CSN
+// create an RF24 object
+RF24 radio(7, 8); // CE, CSN
 
-//address through which two modules communicate.
+// address through which two modules communicate.
 const byte address[6] = "node1";
 
-void setup() {
+void setup()
+{
   Serial.begin(9600);
-  
+
   radio.begin();
 
   // Power Level (MIN, LOW, HIGH, MAX)
   // More Power = More Distance
   radio.setPALevel(RF24_PA_LOW);
 
-  // Set Data Transmission Rate per Second (250KBPS, 1MPS,2MPS) 
+  // Set Data Transmission Rate per Second (250KBPS, 1MPS,2MPS)
   // More Data = Less Distance
   radio.setDataRate(RF24_250KBPS);
 
   // Channels from 0 to 124
   radio.setChannel(124);
-  
-  //set the address
+
+  // set the address
   radio.openWritingPipe(address);
-  
-  //Set module as transmitter
+
+  // Set module as transmitter
   radio.stopListening();
 }
 
-void loop() {
-  //Send message to receiver
+void loop()
+{
+  // Send message to receiver
   const char text[] = "Hello World";
   radio.write(&text, sizeof(text));
-  
+
   delay(1000);
 }
