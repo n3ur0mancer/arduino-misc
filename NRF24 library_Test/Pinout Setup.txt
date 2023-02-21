@@ -1,0 +1,1 @@
+Pinout SetupCE = Pin 7CSN = Pin 8MO = 11MI = 12SCK = Pin 13
