@@ -1,2 +1,2 @@
 # arduino-misc
- Random assaembly of various Arduino projects and codes.
+ Random assortment of various Arduino projects and code.
